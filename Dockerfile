@@ -20,16 +20,11 @@ RUN \
 
 ENV PATH /usr/local/_packages/zinc-0.3.7/bin:$PATH
 
-RUN \
-  touch /etc/my_init.d/90_zinc_status.sh && \
-  chmod +x /etc/my_init.d/90_zinc_start.sh && \
-  echo "#!/bin/bash" >> /etc/my_init.d/90_zinc_start.sh && \
-  echo "cd /usr/local/_packages/zinc-0.3.7/bin" >> /etc/my_init.d/90_zinc_start.sh && \
-  echo "./zinc -start" >> /etc/my_init.d/90_zinc_start.sh
-
 ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64/
 
 WORKDIR /root/
+
+COPY image/ /
 
 CMD ["/sbin/my_init"]
 
